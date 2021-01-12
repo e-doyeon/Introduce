@@ -1,0 +1,271 @@
+/* Animation */
+@keyframes rolling {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20%);
+    }
+    50% {
+        transform: translateY(-40%);
+    }
+    75% {
+        transform: translateY(-60%);
+    }
+    100% {
+        transform: translateY(-80%);
+    }
+}
+
+
+/*css 리셋(초기화) */
+body, h1, h2, h3, p, ul, dl, dd{
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Yusei Magic', sans-serif;
+}
+
+li{
+	list-style-type : none;
+}
+
+h1, h2, h3{
+	font-size: 100%; /*원래 사이즈로 하겠다 */
+	font-weight: normal;
+}
+
+a {
+	color: inherit; /*부모의 폰트사이즈 상속*/
+	text-decoration:  none;
+}
+
+body {
+	background-color: #111;
+	color: #999;
+}
+
+.portrait {
+	background-image: url(images/2.jpg);
+	background-size: cover;
+	background-position: center;
+
+	padding-top: 56.25%; /* 너비기준으로 높이를 잡는다. 창크기에 따라 사진이 조절됨  16:9비율*/
+}
+
+.profile {
+	padding: 7%;
+	min-height: 1000px;
+}
+
+.profile-header,
+.profile-section {
+	padding-bottom: 14%
+}
+
+.profile-section h2{
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Yusei Magic', sans-serif;
+	border-top: 3px solid;
+	color: #ff8000;
+	margin-bottom: 20px;
+	font-size: 1.5em;
+	position: sticky;
+	top: 0;
+	background-color: #111;
+	box-shadow: 0 0 10px 10px #111;
+}
+
+.name {
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Yusei Magic', sans-serif;
+	
+	font-size: 30px;
+	line-height: 1.5;/*1줄의 높이 */
+	margin-bottom:20px;
+	position: sticky;
+	top: -1.8em;
+	background-color: #111;
+	box-shadow: 0 0 10px 10px #111;
+}
+
+.name-job {
+	display: inline-block;
+	color: white;
+	vertical-align: top;
+	height: 1.5em;/*부모의 크기를 받아서 100% */
+	overflow: hidden;
+	padding-right: 0.5em;
+	box-shadow: inset 0 0 50px #111;
+	position: relative;
+}
+
+.name-jop::after {
+	content : ' ';
+	position: absolute;
+	left: 0;
+	top:0;
+	right:0;
+	bottom: 0;
+	margin-left: -1em;
+	box-shadow: inset 0 0 10px 10px #111;
+}
+
+.name-job-list {
+    animation-name: rolling;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+}
+
+.name-title {
+	font-size : 1.8em; /*부모의 크기를 받아서 1.5배 부모의 폰트 사이즈가 달라지면 같이 달라진다. */
+	line-height: 0.7;
+	color : deeppink;
+	margin-left: -0.3em;
+	position: relative;
+	margin-bottom: 40px;
+}
+
+.icons {
+	margin:20px 0;
+}
+
+.icons a {
+	background-image: url(images/1.png);
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	text-indent: -9999px;
+	
+}
+
+.icons a.kakao{
+	background-position: left top;
+}
+
+.icons a.insta{
+	background-position: center top;
+}
+
+.icons a.blog{
+	background-position: right top;
+}
+
+.icons a:hover{
+	background-position-y: bottom;
+}
+
+.timeline {
+	font-size: 0.9rem;
+	color:#666;
+}
+
+
+.timeline li{
+	padding-bottom: 30px;
+}
+
+.timeline li:last-child{
+	padding-bottom: 0;
+}
+
+.timeline li h3{
+	color: orange;
+	font-size: 1rem;
+	letter-spacing: 0.2em;
+	margin-top: 0.5em;
+}
+
+.gragh li {
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, 
+				rgba(117,71,175,1) 0%, rgba(72,103,194,1) 59%,
+			    rgba(65,114,200,1) 63%, rgba(60,122,204,1) 66%, 
+			    rgba(0,212,255,1) 100%);
+	color: white;
+	padding : 0.5em;
+	margin: 0.4em 0;
+	border-radius: 50px; /*동글동글*/
+	box-sizing: border-box; /*패딩값을 추가해줘야 50%됨 */
+}
+
+.gragh li::before {
+	content: attr(data-score); /*data-score의 값을 불러와서 넣는다 */
+	float:right;
+}
+
+.gragh li[data-score="100%"] { width: 100%; }
+.gragh li[data-score="90%"] { width: 90%; }
+.gragh li[data-score="80%"] { width: 80%; }
+.gragh li[data-score="70%"] { width: 70%; }
+.gragh li[data-score="50%"] { width: 50%; }
+
+.list dt {
+	color: orange;
+	float: left;
+	width: 4em;
+}
+
+.list dd {
+	overflow: hidden;
+}
+
+.japan dt {
+	color: orange;
+	float: left;
+	width: 4em;
+	
+}
+
+.japan dd {
+	overflow: hidden;
+	border-bottom: 1px white dashed;
+	padding-bottom: 0.5em;
+}
+
+
+@media ( min-width: 768px ) {
+    .portrait {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 60vw;
+        height: 100vh;
+        padding: 0;
+    }
+    .profile {
+        margin-left: 60vw;
+    }
+    .name {
+        font-size: 4vw;
+    }
+    .timeline {
+        margin: 0 -10px;
+    }
+    .timeline li {
+        width: 50%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .timeline li:nth-child(even) {
+        margin-left: auto;
+        margin-top: -120px;
+        margin-bottom: -120px;
+    }
+}
+/* vw , vh -> 전체창 기준에서의 크기 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
